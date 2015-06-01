@@ -939,6 +939,22 @@ func Highlight(in interface{}, lang, opts string) template.HTML {
 	return template.HTML(helpers.Highlight(html.UnescapeString(str), lang, opts))
 }
 
+func IncludeCode(path, lang, string) template.HTML {
+	var out bytes.Buffer
+	var stderr bytes.Buffer
+
+	cmd := exec.Command("cat", path)
+	cmd.Stdout = &out
+	cmd.Stderr = &stderr
+
+	if err := cmd.Run(); err != nil {
+		jww.ERROR.Print(stderr.String())
+		return code
+	}
+
+	return template.HTML("<pre><code class=\""+lang+"\">"+html.EscapeString(out.String())+"</code></pre>")
+}
+
 var markdownTrimPrefix = []byte("<p>")
 var markdownTrimSuffix = []byte("</p>\n")
 
@@ -1231,6 +1247,7 @@ func init() {
 		"delimit":     Delimit,
 		"sort":        Sort,
 		"highlight":   Highlight,
+		"include_code":IncludeCode,
 		"add":         func(a, b interface{}) (interface{}, error) { return doArithmetic(a, b, '+') },
 		"sub":         func(a, b interface{}) (interface{}, error) { return doArithmetic(a, b, '-') },
 		"div":         func(a, b interface{}) (interface{}, error) { return doArithmetic(a, b, '/') },
