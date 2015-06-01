@@ -939,7 +939,7 @@ func Highlight(in interface{}, lang, opts string) template.HTML {
 	return template.HTML(helpers.Highlight(html.UnescapeString(str), lang, opts))
 }
 
-func IncludeCode(path, lang, string) template.HTML {
+func IncludeCode(path, lang, args ...string) template.HTML {
 	var out bytes.Buffer
 	var stderr bytes.Buffer
 
@@ -951,7 +951,6 @@ func IncludeCode(path, lang, string) template.HTML {
 		jww.ERROR.Print(stderr.String())
 		return template.HTML(stderr.String())
 	}
-
 	return template.HTML("<pre><code class=\""+lang+"\">"+html.EscapeString(out.String())+"</code></pre>")
 }
 
@@ -1247,7 +1246,7 @@ func init() {
 		"delimit":     Delimit,
 		"sort":        Sort,
 		"highlight":   Highlight,
-		"include_code":IncludeCode,
+		"include_code": IncludeCode,
 		"add":         func(a, b interface{}) (interface{}, error) { return doArithmetic(a, b, '+') },
 		"sub":         func(a, b interface{}) (interface{}, error) { return doArithmetic(a, b, '-') },
 		"div":         func(a, b interface{}) (interface{}, error) { return doArithmetic(a, b, '/') },
