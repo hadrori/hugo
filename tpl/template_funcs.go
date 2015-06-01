@@ -949,7 +949,7 @@ func IncludeCode(path, lang, string) template.HTML {
 
 	if err := cmd.Run(); err != nil {
 		jww.ERROR.Print(stderr.String())
-		return code
+		return template.HTML(stderr.String())
 	}
 
 	return template.HTML("<pre><code class=\""+lang+"\">"+html.EscapeString(out.String())+"</code></pre>")
