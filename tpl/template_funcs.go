@@ -939,8 +939,8 @@ func Highlight(in interface{}, lang, opts string) template.HTML {
 	return template.HTML(helpers.Highlight(html.UnescapeString(str), lang, opts))
 }
 
-func IncludeCode(path, lang string) template.HTML {
-	return template.HTML("<pre><code class=\""+lang+"\">"+html.EscapeString(helpers.IncludeCode(path, lang))+"</code></pre>")
+func IncludeCode(path string) template.HTML {
+	return template.HTML(html.EscapeString(helpers.IncludeCode(path)))
 }
 
 var markdownTrimPrefix = []byte("<p>")

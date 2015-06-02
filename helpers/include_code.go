@@ -7,7 +7,7 @@ import (
 	jww "github.com/spf13/jwalterweatherman"
 )
 
-func IncludeCode(path, lang string) string {
+func IncludeCode(path string) string {
 	var out bytes.Buffer
 	var stderr bytes.Buffer
 
