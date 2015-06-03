@@ -1235,7 +1235,7 @@ func init() {
 		"delimit":     Delimit,
 		"sort":        Sort,
 		"highlight":   Highlight,
-		"include_code": IncludeCode,
+		"includeCode"  : IncludeCode,
 		"add":         func(a, b interface{}) (interface{}, error) { return doArithmetic(a, b, '+') },
 		"sub":         func(a, b interface{}) (interface{}, error) { return doArithmetic(a, b, '-') },
 		"div":         func(a, b interface{}) (interface{}, error) { return doArithmetic(a, b, '/') },

@@ -22,7 +22,7 @@ func (t *GoHTMLTemplate) EmbedShortcodes() {
 	t.AddInternalShortcode("ref.html", `{{ .Get 0 | ref .Page }}`)
 	t.AddInternalShortcode("relref.html", `{{ .Get 0 | relref .Page }}`)
 	t.AddInternalShortcode("highlight.html", `{{ if len .Params | eq 2 }}{{ highlight .Inner (.Get 0) (.Get 1) }}{{ else }}{{ highlight .Inner (.Get 0) "" }}{{ end }}`)
-	t.AddInternalShortcode("include_code.html", `<pre><code class="{{ .Get 1 }}">{{ include_code (.Get 0) }}</code></pre>`)
+	t.AddInternalShortcode("includeCode.html", `<pre><code class="{{ .Get 1 }}">{{ includeCode (.Get 0) }}</code></pre>`)
 	t.AddInternalShortcode("test.html", `This is a simple Test`)
 	t.AddInternalShortcode("figure.html", `<!-- image -->
 <figure {{ with .Get "class" }}class="{{.}}"{{ end }}>
