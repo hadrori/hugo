@@ -199,6 +199,10 @@ func GetStaticDirPath() string {
 	return AbsPathify(viper.GetString("StaticDir"))
 }
 
+func GetCodeDirPath() string {
+	return AbsPathify(viper.GetString("CodeDir"))
+}
+
 // GetThemeStaticDirPath returns the theme's static dir path if theme is set.
 // If theme is set and the static dir doesn't exist, an error is returned.
 func GetThemeStaticDirPath() (string, error) {

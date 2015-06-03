@@ -130,6 +130,7 @@ func LoadDefaultSettings() {
 	viper.SetDefault("ContentDir", "content")
 	viper.SetDefault("LayoutDir", "layouts")
 	viper.SetDefault("StaticDir", "static")
+	viper.SetDefault("CodeDir", "static/code")
 	viper.SetDefault("ArchetypeDir", "archetypes")
 	viper.SetDefault("PublishDir", "public")
 	viper.SetDefault("DataDir", "data")
